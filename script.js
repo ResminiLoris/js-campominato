@@ -1,6 +1,8 @@
 // creo array bombe
 const bombs = [];
 let gameover = false;
+const totalNumbers = 100;
+const userAttempts = totalNumbers - bombs.length;
 // inserisco valori bombe
 while(bombs.length < 16){
     const random = Math.floor(Math.random() * 100 - 1) + 1;
@@ -10,7 +12,7 @@ console.log(bombs);
 
 const userChoices = [];
 
-while(userChoices.length < 2){
+while(userChoices.length < userAttempts){
     let userNumber = parseInt(prompt('inserisci un numero', 0));
     if (bombs.includes(userNumber)){
         gameover = true;
