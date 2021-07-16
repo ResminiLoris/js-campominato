@@ -1,5 +1,6 @@
 // creo array bombe
 const bombs = [];
+let gameover = false;
 // inserisco valori bombe
 while(bombs.length < 16){
     const random = Math.floor(Math.random() * 100 - 1) + 1;
@@ -9,15 +10,21 @@ console.log(bombs);
 
 const userChoices = [];
 
-while(userChoices.length < 5){
-    const userNumber = prompt('inserisci un numero', 0);
-    if(userChoices.indexOf(userNumber) === -1){ 
+while(userChoices.length < 2){
+    let userNumber = parseInt(prompt('inserisci un numero', 0));
+    if (bombs.includes(userNumber)){
+        gameover = true;
+        break;
+    } else{
         userChoices.push(userNumber);
-    }
-    else if(userChoices.includes(userNumber)){
-        alert('ops! numero gia scelto')
-    }    
-        
+    }         
 }
-console.log(userChoices);
+
+if (gameover){
+    alert('hai perso! il tuo punteggio è di ' + userChoices.length + ' punti' );
+}
+else {
+    alert('hai vinto!');
+}
+
 
